@@ -182,95 +182,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .action-btn, .submit-btn {
+    .action-btn {
       transition: none;
     }
-  }
-
-  /* ---------- 5. Signup Form ---------- */
-  .signup-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    background: linear-gradient(135deg, rgba(15, 76, 70, 0.65) 0%, rgba(11, 46, 42, 0.65) 100%);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
-    padding: 32px 24px;
-    border-radius: 24px;
-    border: 1.2px solid rgba(207, 162, 58, 0.55);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 24px;
-  }
-
-  .title {
-    font-family: "Tajawal", sans-serif;
-    color: #ffffff;
-    margin: 0 0 8px 0;
-    font-size: 24px;
-    font-weight: 700;
-  }
-
-  .subtitle {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
-    margin: 0 0 24px 0;
-    line-height: 1.5;
-  }
-
-  .input-group {
-    width: 100%;
-    margin-bottom: 16px;
-  }
-
-  input[type="email"] {
-    width: 100%;
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(0, 0, 0, 0.4);
-    color: #ffffff;
-    font-family: "Tajawal", sans-serif;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    text-align: right;
-  }
-
-  input[type="email"]:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 2px rgba(207, 162, 58, 0.3);
-  }
-  
-  input[type="email"]::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-  }
-
-  .submit-btn {
-    width: 100%;
-    height: 56px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: transform 0.12s, box-shadow 0.12s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .submit-btn:active {
-    transform: scale(0.96);
-  }
-  
-  .submit-btn span.label {
-    font-family: "Tajawal", sans-serif;
-    font-weight: 800;
-    font-size: 18px;
-    color: var(--teal-black);
   }
 </style>
 </head>
@@ -297,30 +211,42 @@
 
     <div class="spacer"></div>
 
-    <!-- Signup Form -->
-    <form class="signup-container" id="signup-form">
-      <h2 class="title">التحقق من الطالب</h2>
-      <p class="subtitle">الرجاء إدخال بريدك الإلكتروني الجامعي للمتابعة والتسجيل</p>
-      
-      <div class="input-group">
-        <input type="email" id="email-input" placeholder="البريد الإلكتروني الجامعي" required />
-      </div>
-      
-      <button class="submit-btn" type="submit">
-        <span class="label">تسجيل الدخول</span>
+    <!-- Main action buttons -->
+    <nav class="actions">
+      <!-- In RTL source order, first child = right side = "To the University" -->
+      <button class="action-btn" id="btn-university" type="button">
+        <span class="label">إلى الجامعة</span>
+        <!-- graduation cap, outline -->
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M12 3 1.5 8 12 13l10.5-5L12 3Z" />
+          <path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5" />
+          <path d="M22 8v6" />
+        </svg>
       </button>
-    </form>
+
+      <!-- Second child = left side = "To Home" -->
+      <button class="action-btn" id="btn-home" type="button">
+        <span class="label">إلى البيت</span>
+        <!-- house, outline -->
+        <svg class="icon" viewBox="0 0 24 24">
+          <path d="M4 11.5 12 4l8 7.5" />
+          <path d="M6 10v9a1 1 0 0 0 1 1h3v-5h4v5h3a1 1 0 0 0 1-1v-9" />
+        </svg>
+      </button>
+    </nav>
   </div>
 </div>
 
 <script>
-  document.getElementById('signup-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email-input').value;
-    if (email) {
-      console.log('Sign up email:', email);
-      window.location.href = 'home.html';
-    }
+  // Wire these up to your routing / navigation logic.
+  document.getElementById('btn-university').addEventListener('click', () => {
+    // TODO: navigate to the "ride to university" matching flow.
+    console.log('إلى الجامعة');
+  });
+
+  document.getElementById('btn-home').addEventListener('click', () => {
+    // TODO: navigate to the "ride to home" matching flow.
+    console.log('إلى البيت');
   });
 </script>
 
